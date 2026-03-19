@@ -29,37 +29,49 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-semibold text-[#1a1a1a] tracking-wide">ZENTRA AI</h1>
-          <p className="text-gray-500 text-sm mt-1">Användningsdashboard</p>
+    <main className="min-h-screen bg-[#07070f] flex items-center justify-center px-4">
+      {/* Background glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#0F7FFF] opacity-[0.07] blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full bg-[#7E22CE] opacity-[0.07] blur-[120px]" />
+      </div>
+
+      <div className="relative w-full max-w-sm">
+        {/* Logo */}
+        <div className="text-center mb-10">
+          <span className="text-2xl font-bold tracking-widest bg-gradient-to-r from-[#0F7FFF] to-[#c026d3] bg-clip-text text-transparent">
+            ZENTRA AI
+          </span>
+          <p className="text-gray-500 text-sm mt-2">Användningsdashboard</p>
         </div>
 
-        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-600 mb-2">Lösenord</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#6366f1] transition-colors bg-[#f8f8f8]"
-                autoFocus
-              />
-            </div>
+        {/* Card */}
+        <div className="relative rounded-2xl p-px bg-gradient-to-br from-[#0F7FFF33] to-[#7E22CE33]">
+          <div className="bg-[#0d0d1a] rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-400 mb-2">Lösenord</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-[#141428] border border-white/10 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-[#0F7FFF] transition-colors"
+                  autoFocus
+                />
+              </div>
 
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+              {error && <p className="text-red-400 text-sm">{error}</p>}
 
-            <button
-              type="submit"
-              disabled={!password || loading}
-              className="w-full py-3 bg-[#6366f1] text-white font-medium rounded-lg hover:bg-[#4f46e5] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {loading ? "Loggar in..." : "Logga in"}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={!password || loading}
+                className="w-full py-3 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#0F7FFF] to-[#7E22CE] hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                {loading ? "Loggar in..." : "Logga in"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </main>
